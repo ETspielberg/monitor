@@ -1,4 +1,4 @@
-package ub.unidue.monitor.connector;
+package unidue.ub.monitor.connector;
 
 import java.io.IOException;
 
@@ -11,6 +11,10 @@ import org.apache.commons.httpclient.methods.StringRequestEntity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import unidue.ub.monitor.Process;
+
 public class Connection {
 	
 	public static int register(String process, String identifier,String status, String message) throws JSONException, HttpException, IOException {
@@ -22,6 +26,17 @@ public class Connection {
 		HttpClient client = new HttpClient();
 		PostMethod post = new PostMethod("https://localhost:11883/process");
 		RequestEntity entity = new StringRequestEntity(process.toString(),"application/json",null);
+		post.setRequestEntity(entity);
+		int response = client.executeMethod(post);
+		return response;
+	}
+	
+	public static int register(Process process) throws JSONException, HttpException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		String json = mapper.writeValueAsString(process);
+		HttpClient client = new HttpClient();
+		PostMethod post = new PostMethod("https://localhost:11883/process");
+		RequestEntity entity = new StringRequestEntity(json,"application/json",null);
 		post.setRequestEntity(entity);
 		int response = client.executeMethod(post);
 		return response;

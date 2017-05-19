@@ -1,4 +1,4 @@
-package ub.unidue.monitor;
+package unidue.ub.monitor;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package ub.unidue.monitor;
+package unidue.ub.monitor;
 
 import java.util.Date;
 
@@ -85,6 +85,10 @@ public class Process {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+	
+	public void addMessage(String message) {
+		this.message += "; " + message;
 	}
 
 	/**
