@@ -16,9 +16,7 @@ public class Process {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	private long startTime;
-
-	private long lastTouch;
+	private Date lastTouch;
 
 	private String process;
 
@@ -39,19 +37,11 @@ public class Process {
 		this.id = id;
 	}
 
-	public long getStartTime() {
-		return startTime;
-	}
-
-	public void setStartTime(long startTime) {
-		this.startTime = startTime;
-	}
-
-	public long getLastTouch() {
+	public Date getLastTouch() {
 		return lastTouch;
 	}
 
-	public void setLastTouch(long lastTouch) {
+	public void setLastTouch(Date lastTouch) {
 		this.lastTouch = lastTouch;
 	}
 

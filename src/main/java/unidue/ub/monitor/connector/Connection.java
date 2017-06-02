@@ -24,7 +24,7 @@ public class Connection {
 			.put("status",status)
 			.put("message", message);
 		HttpClient client = new HttpClient();
-		PostMethod post = new PostMethod("https://localhost:11883/process");
+		PostMethod post = new PostMethod("http://localhost:11883/process");
 		RequestEntity entity = new StringRequestEntity(process.toString(),"application/json",null);
 		post.setRequestEntity(entity);
 		int response = client.executeMethod(post);
@@ -35,7 +35,7 @@ public class Connection {
 		ObjectMapper mapper = new ObjectMapper();
 		String json = mapper.writeValueAsString(process);
 		HttpClient client = new HttpClient();
-		PostMethod post = new PostMethod("https://localhost:11883/process");
+		PostMethod post = new PostMethod("http://localhost:11883/process");
 		RequestEntity entity = new StringRequestEntity(json,"application/json",null);
 		post.setRequestEntity(entity);
 		int response = client.executeMethod(post);
@@ -50,7 +50,7 @@ public class Connection {
 			.put("message", message)
 			.put("lastTouch", String.valueOf(System.currentTimeMillis()));
 		HttpClient client = new HttpClient();
-		PutMethod put = new PutMethod("https://localhost:11883/process" + String.valueOf(id));
+		PutMethod put = new PutMethod("http://localhost:11883/process" + String.valueOf(id));
 		RequestEntity entity = new StringRequestEntity(process.toString(),"application/json",null);
 		put.setRequestEntity(entity);
 		int response = client.executeMethod(put);
